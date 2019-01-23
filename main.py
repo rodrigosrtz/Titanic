@@ -24,3 +24,21 @@ df_train.info()
 
 # .describe prints the summary statistics of numeric columns of the dataframe
 df_train.describe()
+
+# This is for having an idea about what data looks like, so now we can start doing EDA
+
+
+'''
+Exploratory Data Analysis (EDA)
+'''
+
+# Using univariate visualization method to see our target variable
+sns.countplot(x='Survived', data=df_train)
+
+# Creating a bad Predictive model for baseline
+df_test['Survived'] = 0
+df_test[['PassengerId', 'Survived']].to_csv('data/predictions/no_survivors.csv', index=False)
+
+# Checking created no_survivors.csv
+df_badmodel = pd.read_csv('data/predictions/no_survivors.csv')
+df_badmodel.head()
