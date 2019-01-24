@@ -72,3 +72,15 @@ sns.catplot(x='Survived', col='Pclass', kind='count', data=df_train)
 
 sns.catplot(x='Survived', col='Embarked', kind='count', data=df_train)
 # It seems that passengers that embarked at southampton are more unlikely to survive
+
+# EDA with numerical variables
+# Using univariate distribution with histograms
+sns.distplot(df_train.Fare, kde=False)
+# Most passengers payed less than $100
+df_train.groupby('Survived').Fare.hist(alpha=0.5)
+# In red we see the survivors
+# so it seems that passengers who payed more had higher chance of surviving
+
+# As we have missing values in Age column, we first have to clean that up
+df_train_drop = df_train.dropna()
+sns.distplot(df_train_drop.Age, kde=False)
