@@ -64,3 +64,11 @@ df_test['Survived'] = df_test.Sex == 'female' #Creates 'Survived' column with Tr
 df_test['Survived'] = df_test.Survived.apply(lambda x: int(x)) #Changes Bool True/False for 1/0
 df_test.head()
 df_test[['PassengerId', 'Survived']].to_csv('data/predictions/women_survived.csv', index=False)
+
+# Using bivariate visualization method to check if there is a
+# relationship between other variables and target variable
+sns.catplot(x='Survived', col='Pclass', kind='count', data=df_train)
+# It seems that first class passengers are more likely to survive and third class are less likely
+
+sns.catplot(x='Survived', col='Embarked', kind='count', data=df_train)
+# It seems that passengers that embarked at southampton are more unlikely to survive
