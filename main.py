@@ -84,3 +84,8 @@ df_train.groupby('Survived').Fare.hist(alpha=0.5)
 # As we have missing values in Age column, we first have to clean that up
 df_train_drop = df_train.dropna()
 sns.distplot(df_train_drop.Age, kde=False)
+
+# Visualizing the age distribution of survivors and non survivors
+df_train_drop.groupby('Survived').Age.hist(alpha=0.5)
+# In red we see the survivors
+# so it seems that passengers who were between 18-40 had higher chance of surviving
