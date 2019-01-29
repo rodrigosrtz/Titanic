@@ -89,3 +89,14 @@ sns.distplot(df_train_drop.Age, kde=False)
 df_train_drop.groupby('Survived').Age.hist(alpha=0.5)
 # In red we see the survivors
 # so it seems that passengers who were between 18-40 had higher chance of surviving
+
+sns.stripplot(x='Survived', y='Fare', data=df_train, alpha=0.3) #Jitter=True is default
+
+sns.swarmplot(x='Survived', y='Fare', data=df_train)
+# Fare amount seems to be corretaled with Survival
+
+# Checking Fare as a function os Survival
+df_train.groupby('Survived').Fare.describe()
+# Visualizing Scatterplot colored by 'Survived'
+sns.lmplot(x='Age', y='Fare', hue='Survived', data=df_train, fit_reg=False, scatter_kws={'alpha':0.5})
+# Looks like those who survived either paid more for their ticket or were young
