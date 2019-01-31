@@ -100,3 +100,6 @@ df_train.groupby('Survived').Fare.describe()
 # Visualizing Scatterplot colored by 'Survived'
 sns.lmplot(x='Age', y='Fare', hue='Survived', data=df_train, fit_reg=False, scatter_kws={'alpha':0.5})
 # Looks like those who survived either paid more for their ticket or were young
+
+# Displaying a shit-ton of info in a single grid of plots
+sns.pairplot(df_train_drop, hue='Survived', diag_kind='')
